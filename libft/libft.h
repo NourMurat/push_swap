@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 14:53:29 by numussan          #+#    #+#             */
-/*   Updated: 2022/09/17 22:47:24 by numussan         ###   ########.fr       */
+/*   Updated: 2022/09/22 16:32:41 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, int n);
 void	*ft_memchr(const void *s, int c, int n);
 int		ft_memcmp(const void *s1, const void *s2, int n);
 char	*ft_strnstr(const char *haystack, const char *needle, int len);
-int		ft_atoi(const char *str);
+long long	ft_atoi(const char *str);
 void	*ft_calloc(int count, int size);
 char	*ft_strdup(const char *s1);
 

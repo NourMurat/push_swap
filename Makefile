@@ -6,7 +6,7 @@
 #    By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 19:05:58 by numussan          #+#    #+#              #
-#    Updated: 2022/09/19 22:04:28 by numussan         ###   ########.fr        #
+#    Updated: 2022/09/22 16:55:53 by numussan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS 		= push_swap.c
 
 OBJS		= $(SRCS:.c=.o)
 
-CCF			= gcc -Wall -Wextra -Werror
+CCF			= gcc -Wall -Wextra -Werror -fsanitize=address -g
 
 MAKELIBFT	= cd libft && make
 MAKEPRINTF	= cd ft_printf && make
