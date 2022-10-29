@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 17:17:20 by numussan          #+#    #+#             */
-/*   Updated: 2022/09/23 21:22:44 by numussan         ###   ########.fr       */
+/*   Updated: 2022/10/29 23:39:22 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,53 @@
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
-typedef struct s_stack
+typedef struct  s_stack
 {
-    int nbr;
-    struct s_stack *next;
+	int 			nbr;
+	struct s_stack	*next;
 }   t_stack;
 
-char	**ft_separate_string(int argc, char **argv);
-void	ft_check_dublication(int argc, char **new_argv);
-void    ft_parsing(char	*argv);
-void 	add_nbr_to_list(char *s);
-void	ft_check_is_it_nbr(char *s);
-void	push_to_list(int nbr);
+// typedef struct	s_number
+// {
+// 	int 			number;
+// 	struct s_number	*next_number;
+// }   t_number;
+
+// typedef struct  s_stack
+// {
+// 	t_number	*head_number;
+// 	t_number	*last_number;
+// 	int			size_of_stack;
+// 	int			stack_position;
+// }   t_stack;
+
 void	ft_error(char *s);
+void	ft_parsing_and_fill_list_a(int argc, char **s, t_stack **a);
+char	**ft_separate_string(int argc, char **s);
+void	ft_check_dublication(char **s);
+void	ft_add_numbers_to_stack_a(t_stack **a, char *s);
+void	ft_is_it_number(char *s);
+
+void	ft_fill_list_a(t_stack **a, int nbr);
+void	ft_push_to_head(t_stack **head, int nbr);
+t_stack	*ft_find_last(t_stack *head);
+t_stack	*ft_find_prelast(t_stack *head);
+void    ft_delete_head(t_stack **head);
+
+void	sa(t_stack **a, int flag);
+void	sb(t_stack **b, int flag);
+void	ss(t_stack **a, t_stack **b);
+void	pa(t_stack **a, t_stack **b);
+void	pb(t_stack **a, t_stack **b);
+void	ra(t_stack **head_a, int flag);
+void	rb(t_stack **head_b, int flag);
+void	rr(t_stack **head_a, t_stack **head_b);
+void	rra(t_stack **head_a, int flag);
+void    rrb(t_stack **head_b, int flag);
+void	rrr(t_stack **head_a, t_stack **head_b);
+
+void    sort_3(t_stack **a);
+
+
 
 #endif

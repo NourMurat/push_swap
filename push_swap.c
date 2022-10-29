@@ -6,21 +6,45 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 17:16:04 by numussan          #+#    #+#             */
-/*   Updated: 2022/09/23 21:40:58 by numussan         ###   ########.fr       */
+/*   Updated: 2022/10/29 23:46:30 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_to_list(int nbr)
+void	ft_print_stack(t_stack *head)
 {
-	// t_stack	*new_nbr;
+	t_stack	*temp;
+
+	temp = head;
+	while (temp != NULL)
+	{
+		ft_printf("%d\n", temp->nbr);
+		temp = temp->next;
+	}
+}
+
+int	ft_size_stack(t_stack **head)
+{
+	int	count;
 	
-	// *new_nbr = (t_stack *)malloc(sizeof(t_stack));
-	// a->nbr = nbr;
-	// new_nbr->next = a;
-	// a = new_nbr;
-	ft_printf("%d\n", nbr);
+	count = 0;
+	while (*head)
+	{
+		*head = (*head)->next;
+		count++;
+	}
+	return (count);
+}
+
+void	ft_sort(t_stack **a, t_stack **b)
+{
+	int	size;
+	
+	size = ft_size_stack(a);
+	b = NULL; //remove it after
+	if (size == 3)
+		sort_3(a);
 }
 
 void	ft_error(char *s)
@@ -29,96 +53,26 @@ void	ft_error(char *s)
 	exit (1);
 }
 
-void	check_is_it_nbr(char *s)
-{
-	int	i;
-
-	i = 0;
-	if (s[0] == '-' || s[0] == '+')
-		i++;
-	while (s[i] != '\0')
-	{
-		if (s[i] < '0' || s[i] > '9')
-			ft_error("Non numeric character\n");
-		i++;
-	}
-}
-
-void	add_nbr_to_list(char *s)
-{
-	long long	nbr;
-
-	nbr = 0;
-	check_is_it_nbr(s);
-	nbr = ft_atoi(s);
-	if (nbr < -2147483648 || nbr > 2147483647)
-		ft_error("Number is not in the range of int type\n");
-	push_to_list((int)nbr);
-}
-
-void	ft_check_dublication(int argc, char **new_argv)
-{
-	int	i;
-	int j;
-
-	i = 0;
-	if (argc > 2)
-	{
-		while (new_argv[i] != NULL)
-		{
-			j = 1;
-			while (new_argv[i + j] != NULL)
-			{
-				if ((ft_strcmp(new_argv[i], new_argv[i + j])) == 0)
-					ft_error("ERROR! Numbers are dublicated!\n");
-				j++;
-			}
-			i++;
-		}
-	}
-}
-
-char	**ft_separate_string(int argc, char **argv)
-{
-	int		i;
-	char	*new_arr;
-	char	*temp_new_arr;
-
-	i = 1;
-	new_arr = "";
-	temp_new_arr = NULL;
-	while (i < argc)
-	{
-		temp_new_arr = new_arr;
-		new_arr = ft_strjoin(new_arr, argv[i]);
-		if (i > 1)
-			free(temp_new_arr);
-		i++;
-	}
-	return(ft_split(new_arr, ' '));
-}
-
 int	main(int argc, char **argv)
 {
-	// t_stack	*a;
-	int	i;
-	char **new_argv;
-	int	ready_nbrs;
+	t_stack	*a;
+	t_stack *b;
 
-	ready_nbrs = 0;
-	new_argv = NULL;
-	if (argc <= 1)
-		ft_error("ERROR! Wrong start command!\n");
-	// *a = (t_stack *)malloc(sizeof(t_stack));
-	// if (!*a)
-	// 	ft_error("ERROR! Memmory didn`t allocate");
-	new_argv = ft_separate_string(argc, argv);
-	ft_check_dublication(argc, new_argv);
-	i = 0;
-	while(i <= argc)
+	a = NULL;
+	b = NULL;
+	ft_parsing_and_fill_list_a(argc, argv, &a);
+	// ft_sort(&a, &b);
+	while (a)
 	{
-		add_nbr_to_list(new_argv[i]);
-		i++;
+		ft_printf("%d\n", (a)->nbr);
+		(a) = (a)->next;
 	}
+	// ft_print_stack(a);
+	// ft_printf("\n");
+	// ra(&a, 1);
+	// ft_print_stack(a);
+	// rra(&a, 1);
+	// ft_printf("\n");
+	// ft_print_stack(a);
 	return (0);
 }

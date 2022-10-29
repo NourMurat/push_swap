@@ -1,0 +1,78 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sa_sb_ss_pa_pb.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/22 04:01:12 by numussan          #+#    #+#             */
+/*   Updated: 2022/10/29 02:55:56 by numussan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+void    sa(t_stack **a, int flag)
+{
+	int	temp;
+
+	temp = 0;
+	if (*a && (*a)->next)
+	{
+		temp = (*a)->nbr;
+		(*a)->nbr = (*a)->next->nbr;
+		(*a)->next->nbr = temp;
+		if (flag == 1)
+			ft_printf("sa\n");
+	}
+	else
+		ft_printf("<<<<< There is only 1 or no elements in stack A! >>>>>");
+}
+
+void	sb(t_stack **b, int flag)
+{
+	int	temp;
+
+	temp = 0;
+	if (*b && (*b)->next)
+	{
+		temp = (*b)->nbr;
+		(*b)->nbr = (*b)->next->nbr;
+		(*b)->next->nbr = temp;
+		if (flag == 1)
+			ft_printf("sb\n");
+	}
+	else
+		ft_printf("<<<<< There is only 1 or no elements in stack B! >>>>>");
+}
+
+void	ss(t_stack **a, t_stack **b)
+{
+	sa(a, 0);
+	sb(b, 0);
+	ft_printf("ss\n");
+}
+
+void	pa(t_stack **a, t_stack **b)
+{
+	if (*b)
+	{
+		ft_push_to_head(a, (*b)->nbr);
+		ft_delete_head(b);
+		ft_printf("pa\n");
+	}
+	else
+		ft_printf("<<<<< The stack B is empty! >>>>>");
+}
+
+void	pb(t_stack **a, t_stack **b)
+{
+	if (*a)
+	{
+		ft_push_to_head(b, (*a)->nbr);
+		ft_delete_head(a);
+		ft_printf("pb\n");
+	}
+	else
+		ft_printf("<<<<< The stack A is empty! >>>>>");
+}
