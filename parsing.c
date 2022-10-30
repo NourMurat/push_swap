@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 04:53:53 by numussan          #+#    #+#             */
-/*   Updated: 2022/10/29 23:14:23 by numussan         ###   ########.fr       */
+/*   Updated: 2022/10/30 01:45:55 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_add_numbers_to_stack_a(t_stack **a, char *s)
 	if (nbr < -2147483648 || nbr > 2147483647)
 		ft_error("<<<<< ERROR! Number is not in the range of int type! >>>>>\n");
 	// ft_printf("%d\n", (int)nbr);
-	ft_fill_list_a(a, (int)nbr);
+	op_fill_list_a(a, (int)nbr);
 }
 
 void	ft_check_dublication(char **s)

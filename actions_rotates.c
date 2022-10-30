@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ra_rb_rr.c                                         :+:      :+:    :+:   */
+/*   actions_rotates.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 20:19:22 by numussan          #+#    #+#             */
-/*   Updated: 2022/10/29 02:55:28 by numussan         ###   ########.fr       */
+/*   Updated: 2022/10/30 01:49:19 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void    ra(t_stack **head_a, int flag)
 {
 	t_stack	*last;
 
-	last = ft_find_last(*head_a);
+	last = op_find_last(*head_a);
 	last->next = *head_a;
 	*head_a = (*head_a)->next;
 	last->next->next = NULL;
-	if (flag == 1)
+	if (flag)
 		ft_printf("ra\n");
 }
 
@@ -28,11 +28,11 @@ void	rb(t_stack **head_b, int flag)
 {
 	t_stack	*last;
 
-	last = ft_find_last(*head_b);
+	last = op_find_last(*head_b);
 	last->next = *head_b;
 	*head_b = (*head_b)->next;
 	last->next->next = NULL;
-	if (flag == 1)
+	if (flag)
 		ft_printf("rb\n");
 }
 
@@ -48,12 +48,12 @@ void    rra(t_stack **head_a, int flag)
 	t_stack	*last;
 	t_stack	*prelast;
 
-	last = ft_find_last(*head_a);
-	prelast = ft_find_prelast(*head_a);
+	last = op_find_last(*head_a);
+	prelast = op_find_prelast(*head_a);
 	last->next = *head_a;
 	prelast->next = NULL;
 	*head_a = last;
-	if (flag  == 1)
+	if (flag)
 		ft_printf("rra\n");
 }
 
@@ -62,12 +62,12 @@ void    rrb(t_stack **head_b, int flag)
 	t_stack	*last;
 	t_stack	*prelast;
 
-	last = ft_find_last(*head_b);
-	prelast = ft_find_prelast(*head_b);
+	last = op_find_last(*head_b);
+	prelast = op_find_prelast(*head_b);
 	last->next = *head_b;
 	prelast->next = NULL;
 	*head_b = last;
-	if (flag  == 1)
+	if (flag)
 		ft_printf("rrb\n");
 }
 

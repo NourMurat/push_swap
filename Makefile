@@ -6,13 +6,13 @@
 #    By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 19:05:58 by numussan          #+#    #+#              #
-#    Updated: 2022/10/29 23:39:08 by numussan         ###   ########.fr        #
+#    Updated: 2022/10/30 01:44:00 by numussan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		= push_swap
 
-SRCS 		= push_swap.c parsing.c ra_rb_rr.c sa_sb_ss_pa_pb.c operations.c sort.c
+SRCS 		= push_swap.c parsing.c actions_swap_push.c actions_rotates.c operations.c sort_2_3.c big_sort.c
 
 OBJS		= $(SRCS:.c=.o)
 

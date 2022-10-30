@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 17:16:04 by numussan          #+#    #+#             */
-/*   Updated: 2022/10/29 23:46:30 by numussan         ###   ########.fr       */
+/*   Updated: 2022/10/30 04:59:56 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,6 @@ void	ft_print_stack(t_stack *head)
 	}
 }
 
-int	ft_size_stack(t_stack **head)
-{
-	int	count;
-	
-	count = 0;
-	while (*head)
-	{
-		*head = (*head)->next;
-		count++;
-	}
-	return (count);
-}
-
-void	ft_sort(t_stack **a, t_stack **b)
-{
-	int	size;
-	
-	size = ft_size_stack(a);
-	b = NULL; //remove it after
-	if (size == 3)
-		sort_3(a);
-}
-
 void	ft_error(char *s)
 {
 	ft_printf("%s", s);
@@ -56,18 +33,12 @@ void	ft_error(char *s)
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
-	t_stack *b;
 
 	a = NULL;
-	b = NULL;
 	ft_parsing_and_fill_list_a(argc, argv, &a);
-	// ft_sort(&a, &b);
-	while (a)
-	{
-		ft_printf("%d\n", (a)->nbr);
-		(a) = (a)->next;
-	}
+	ft_count_stack_a_and_sort(&a);
 	// ft_print_stack(a);
+
 	// ft_printf("\n");
 	// ra(&a, 1);
 	// ft_print_stack(a);

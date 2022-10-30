@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sa_sb_ss_pa_pb.c                                   :+:      :+:    :+:   */
+/*   actions_swap_push.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 04:01:12 by numussan          #+#    #+#             */
-/*   Updated: 2022/10/29 02:55:56 by numussan         ###   ########.fr       */
+/*   Updated: 2022/10/30 01:48:47 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void    sa(t_stack **a, int flag)
 		temp = (*a)->nbr;
 		(*a)->nbr = (*a)->next->nbr;
 		(*a)->next->nbr = temp;
-		if (flag == 1)
+		if (flag)
 			ft_printf("sa\n");
 	}
 	else
@@ -39,7 +39,7 @@ void	sb(t_stack **b, int flag)
 		temp = (*b)->nbr;
 		(*b)->nbr = (*b)->next->nbr;
 		(*b)->next->nbr = temp;
-		if (flag == 1)
+		if (flag)
 			ft_printf("sb\n");
 	}
 	else
@@ -57,8 +57,8 @@ void	pa(t_stack **a, t_stack **b)
 {
 	if (*b)
 	{
-		ft_push_to_head(a, (*b)->nbr);
-		ft_delete_head(b);
+		op_push_to_head(a, (*b)->nbr);
+		op_delete_head(b);
 		ft_printf("pa\n");
 	}
 	else
@@ -69,8 +69,8 @@ void	pb(t_stack **a, t_stack **b)
 {
 	if (*a)
 	{
-		ft_push_to_head(b, (*a)->nbr);
-		ft_delete_head(a);
+		op_push_to_head(b, (*a)->nbr);
+		op_delete_head(a);
 		ft_printf("pb\n");
 	}
 	else
