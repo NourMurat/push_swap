@@ -6,20 +6,22 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 20:19:22 by numussan          #+#    #+#             */
-/*   Updated: 2022/10/30 01:49:19 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/02 18:12:26 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    ra(t_stack **head_a, int flag)
+void    ra(t_stack **head, int flag)
 {
+	t_stack	*tmp;
 	t_stack	*last;
 
-	last = op_find_last(*head_a);
-	last->next = *head_a;
-	*head_a = (*head_a)->next;
-	last->next->next = NULL;
+	tmp = *head;
+	last = op_find_last(tmp);
+	last->next = tmp;
+	*head = tmp->next;
+	tmp->next = NULL;
 	if (flag)
 		ft_printf("ra\n");
 }
@@ -27,7 +29,9 @@ void    ra(t_stack **head_a, int flag)
 void	rb(t_stack **head_b, int flag)
 {
 	t_stack	*last;
+	t_stack	*tmp;
 
+	tmp = *head_b;
 	last = op_find_last(*head_b);
 	last->next = *head_b;
 	*head_b = (*head_b)->next;

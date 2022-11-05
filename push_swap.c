@@ -6,20 +6,48 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 17:16:04 by numussan          #+#    #+#             */
-/*   Updated: 2022/10/30 04:59:56 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/06 02:40:04 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_print_stack(t_stack *head)
+void	ft_free_after_split(char **s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		free(s[i]);
+		s[i] = NULL;
+		i++;
+	}
+	free(s);
+}
+
+void	ft_free_stack(t_stack **head)
+{
+	t_stack	*tmp;
+
+	while (*head)
+	{
+		tmp = *head;
+		*head = (*head)->next;
+		free(tmp);
+		tmp = NULL;
+	}
+}
+
+void	ft_print_stack(t_stack **head)
 {
 	t_stack	*temp;
 
-	temp = head;
+	temp = *head;
 	while (temp != NULL)
 	{
-		ft_printf("%d\n", temp->nbr);
+		printf("nbr: %d   ra: %d   rra: %d  rb: %d    rrb: %d\n",
+				temp->nbr, temp->rotA, temp->revrotA, temp->rotB, temp->revrotB);
 		temp = temp->next;
 	}
 }
@@ -36,14 +64,7 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	ft_parsing_and_fill_list_a(argc, argv, &a);
-	ft_count_stack_a_and_sort(&a);
-	// ft_print_stack(a);
-
-	// ft_printf("\n");
-	// ra(&a, 1);
-	// ft_print_stack(a);
-	// rra(&a, 1);
-	// ft_printf("\n");
-	// ft_print_stack(a);
+	ft_sorting(&a);
+	ft_free_stack(&a);
 	return (0);
 }

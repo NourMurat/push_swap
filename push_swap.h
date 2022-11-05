@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 17:17:20 by numussan          #+#    #+#             */
-/*   Updated: 2022/10/30 05:07:46 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/06 02:42:22 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,18 @@
 typedef struct  s_stack
 {
 	int 			nbr;
-	int				size;
+	int				pos;
+	int				rotA;
+	int				revrotA;
+	int				rotB;
+	int				revrotB;
+	int				best;
 	struct s_stack	*next;
-}   t_stack;
-
-// typedef struct	s_number
-// {
-// 	int 			number;
-// 	struct s_number	*next_number;
-// }   t_number;
-
-// typedef struct  s_stack
-// {
-// 	t_number	*head_number;
-// 	t_number	*last_number;
-// 	int			size_of_stack;
-// 	int			stack_position;
-// }   t_stack;
+}	t_stack;
 
 void	ft_error(char *s);
+void	ft_free_stack(t_stack **head);
+void	ft_free_after_split(char **s);
 
 void	ft_parsing_and_fill_list_a(int argc, char **s, t_stack **a);
 char	**ft_separate_string(int argc, char **s);
@@ -45,12 +38,15 @@ void	ft_check_dublication(char **s);
 void	ft_is_it_number(char *s);
 void	ft_add_numbers_to_stack_a(t_stack **a, char *s);
 
+void	ft_print_stack(t_stack **head); // remove it before submit
+
 void	op_fill_list_a(t_stack **a, int nbr);
 t_stack	*op_find_last(t_stack *head);
 t_stack	*op_find_prelast(t_stack *head);
 int		op_stack_size(t_stack **head);
 void	op_push_to_head(t_stack **head, int nbr);
 void    op_delete_head(t_stack **head);
+int		op_check_sorted_or_presorted(t_stack **a);
 
 void	sa(t_stack **a, int flag);
 void	sb(t_stack **b, int flag);
@@ -64,11 +60,29 @@ void	rra(t_stack **head_a, int flag);
 void    rrb(t_stack **head_b, int flag);
 void	rrr(t_stack **head_a, t_stack **head_b);
 
-void	ft_count_stack_a_and_sort(t_stack **a);
-void    sorting_2_3(t_stack **a);
-int		preparation_for_big_sorting(t_stack **a);
-int		*fill_arr(t_stack **a, int *arr);
-int		*insertion_sort_arr(t_stack **a, int *arr);
+void	ft_sorting(t_stack **a);
+void    sorting_3(t_stack **a);
+void	preparation_for_big_sorting(t_stack **a);
+void	find_min_max_med(t_stack **a, int *min, int *max, int *med);
+int		*fill_array(t_stack **a, int *arr);
+int		*insertion_sort_array(t_stack **a, int *arr);
+void	determine_position(t_stack **head, int *arr);
+void	transfer_to_stack_b(t_stack **a, t_stack **b, int min, int max, int med);
+void    presort_3(t_stack **a);
+
+// void	reset_i(t_stack **a, t_stack **b);
+
+void    transfer_to_stack_a(t_stack **a, t_stack **b);
+void	count_moves_b(t_stack **b);
+void	count_moves_a(t_stack **a, t_stack **b);
+
+// void	transfer_to_stack_a(t_stack **head_a, t_stack **head_b);
+// void	transfer_to_stack_a(t_stack **head_a, t_stack **head_b);
+// void	scoring_in_b(t_stack *head_b);
+// void	scoring_in_a(t_stack *head_a, t_stack *head_b);
+// t_stack	*make_decision(t_stack *head, int *transfer_type);
+// void	process_decision(t_stack **head_a, t_stack **head_b, t_stack *elem, int *ttype);
+
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 04:53:53 by numussan          #+#    #+#             */
-/*   Updated: 2022/10/30 01:45:55 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/06 02:38:47 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,5 @@ void	ft_parsing_and_fill_list_a(int argc, char **s, t_stack **a)
 		ft_add_numbers_to_stack_a(a, separate_nbrs[i]);
 		i++;
 	}
+	ft_free_after_split(separate_nbrs);
 }

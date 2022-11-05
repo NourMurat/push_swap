@@ -6,11 +6,31 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 20:22:48 by numussan          #+#    #+#             */
-/*   Updated: 2022/10/30 04:41:02 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/03 00:49:49 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	op_check_sorted_or_presorted(t_stack **a)
+{
+	t_stack *tmp;
+	int	count;
+
+	tmp = *a;
+	count = 0;
+	while (tmp->next)
+	{
+		if (tmp->nbr > tmp->next->nbr)
+			count++;
+		tmp = tmp->next;
+	}
+	if (count > 1 || (tmp->nbr > (*a)->nbr && count > 0))
+		return (1); //not presort
+	if (count == 1)
+		return (2); //presort
+	return (0); //sort
+}
 
 void    op_delete_head(t_stack **head)
 {
@@ -29,7 +49,13 @@ void	op_push_to_head(t_stack **head, int nbr)
 	if (!new_node)
 		ft_error("<<<<< ERROR! Memmory didn`t allocate! >>>>>\n");
 	new_node->nbr = nbr;
+	new_node->pos = 0;
 	new_node->next = *head;
+	new_node->rotA = 0;
+	new_node->revrotA = 0;
+	new_node->rotB = 0;
+	new_node->revrotB = 0;
+	new_node->best = 0;
 	*head = new_node;
 }
 
@@ -42,7 +68,7 @@ int	op_stack_size(t_stack **head)
 	count = 0;
 	while (tmp)
 	{
-		tmp = (tmp)->next;
+		tmp = tmp->next;
 		count++;
 	}
 	return (count);
@@ -80,6 +106,11 @@ void	op_fill_list_a(t_stack **a, int nbr)
 	if (!new_node)
 		ft_error("<<<<< ERROR! Memmory didn`t allocate! >>>>>\n");
 	new_node->nbr = nbr;
+	new_node->pos = 0;
+	new_node->revrotA = 0;
+	new_node->rotB = 0;
+	new_node->revrotB = 0;
+	new_node->best = 0;
 	new_node->next = NULL;
 	if (!*a)
 		*a = new_node;
