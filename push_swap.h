@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 17:17:20 by numussan          #+#    #+#             */
-/*   Updated: 2022/11/06 02:42:22 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/07 05:50:30 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
+# include <stdlib.h>
 
 typedef struct  s_stack
 {
@@ -31,12 +32,14 @@ typedef struct  s_stack
 void	ft_error(char *s);
 void	ft_free_stack(t_stack **head);
 void	ft_free_after_split(char **s);
+void	ft_err_free_split_and_list(t_stack **head, char **str, char *s);
 
 void	ft_parsing_and_fill_list_a(int argc, char **s, t_stack **a);
 char	**ft_separate_string(int argc, char **s);
+void	ft_check_spaces(char **s);
 void	ft_check_dublication(char **s);
-void	ft_is_it_number(char *s);
-void	ft_add_numbers_to_stack_a(t_stack **a, char *s);
+void	ft_is_it_number(t_stack **a, char **str, char *s);
+void	ft_add_numbers_to_stack_a(t_stack **a, char **str, char *s);
 
 void	ft_print_stack(t_stack **head); // remove it before submit
 

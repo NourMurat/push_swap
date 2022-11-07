@@ -6,11 +6,18 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 17:16:04 by numussan          #+#    #+#             */
-/*   Updated: 2022/11/07 00:39:39 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/07 05:47:59 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_err_free_split_and_list(t_stack **head, char **str, char *s)
+{
+	ft_free_after_split(str);
+	ft_free_stack(head);
+	ft_error(s);
+}
 
 void	ft_free_after_split(char **s)
 {
