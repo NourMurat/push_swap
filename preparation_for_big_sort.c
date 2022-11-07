@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 01:26:25 by numussan          #+#    #+#             */
-/*   Updated: 2022/11/07 04:41:27 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/07 06:02:08 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ void	preparation_for_big_sorting(t_stack **a)
 	b = NULL;
 	if (op_check_sorted_or_presorted(a) == 1)
 	{
-		ft_printf("not presort!\n"); // remove it before submit
+		// ft_printf("not presort!\n"); // remove it before submit
 		find_min_max_med(a, &min, &max, &med);
 		transfer_to_stack_b(a, &b, min, max, med);
 		presort_3(a);
@@ -171,9 +171,9 @@ void	preparation_for_big_sorting(t_stack **a)
 	ft_free_stack(&b);
 	if (op_check_sorted_or_presorted(a) == 2)
 	{
-		ft_printf("presort!\n"); // remove it before submit
+		// ft_printf("presort!\n"); // remove it before submit
 		final_sorting(a);
 	}
-	if (!op_check_sorted_or_presorted(a))
-		ft_printf("NUMBERS SORTED!!!\n"); // remove it before submit
+	// if (!op_check_sorted_or_presorted(a))
+	// 	ft_printf("NUMBERS SORTED!!!\n"); // remove it before submit
 }

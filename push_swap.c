@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 17:16:04 by numussan          #+#    #+#             */
-/*   Updated: 2022/11/07 05:47:59 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/07 07:23:48 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	ft_parsing_and_fill_list_a(argc, argv, &a);
+	ft_check_dubl(&a);
 	ft_sorting(&a);
 	ft_free_stack(&a);
 	return (0);

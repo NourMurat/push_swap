@@ -6,12 +6,34 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 04:53:53 by numussan          #+#    #+#             */
-/*   Updated: 2022/11/07 05:49:11 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/07 07:47:47 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	ft_check_dubl(t_stack **a)
+{
+	t_stack	*temp;
+	t_stack *current;
+
+	current = *a;
+	temp = current->next;
+	while (current->next != NULL)
+	{
+		while (temp != NULL)
+		{
+			if (current->nbr == temp->nbr)
+			{
+				ft_free_stack(a);
+				ft_error("<<<<< ERROR! Dublicate int nbrs! >>>>>");
+			}
+			temp = temp->next;
+		}
+		current = current->next;
+		temp = current->next;
+	}
+}
 
 void	ft_is_it_number(t_stack **a, char **str, char *s)
 {
@@ -19,9 +41,11 @@ void	ft_is_it_number(t_stack **a, char **str, char *s)
 
 	i = 0;
 	if (s[0] == '-' || s[0] == '+')
+	{
 		if (!s[1])
-			ft_err_free_split_and_list(a, str, "<<<<< ERROR! Only one sign - or +! >>>>>\n");
-	i++;
+			ft_err_free_split_and_list(a, str, "<<<<< ERROR! Only one sign - or + >>>>>\n");
+		i++;
+	}
 	while (s[i])
 	{
 		if (s[i] < '0' || s[i] > '9')
@@ -108,7 +132,7 @@ void	ft_check_spaces(char **s)
 			j++;
 		}
 		if (sp == j)
-			ft_error("<<<<< ERROR! Only spaces! >>>>>\n");
+			ft_error("<<<<< ERROR! Empty argument OR only spaces! >>>>>\n");
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 17:17:20 by numussan          #+#    #+#             */
-/*   Updated: 2022/11/07 05:50:30 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/07 07:38:35 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	ft_is_it_number(t_stack **a, char **str, char *s);
 void	ft_add_numbers_to_stack_a(t_stack **a, char **str, char *s);
 
 void	ft_print_stack(t_stack **head); // remove it before submit
+void	ft_check_dubl(t_stack **a);
 
 void	op_fill_list_a(t_stack **a, int nbr);
 t_stack	*op_find_last(t_stack *head);

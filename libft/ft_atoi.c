@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 15:58:08 by numussan          #+#    #+#             */
-/*   Updated: 2022/11/06 05:36:56 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/07 06:21:21 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ long long	ft_atoi(const char *str)
 	i = 0;
 	positive = 1;
 	number = 0;
+	while (str[i] == 0 && str[i + 1])
+		i++;
 	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == 43 || str[i] == 45)
