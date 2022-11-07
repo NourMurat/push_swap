@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 01:26:25 by numussan          #+#    #+#             */
-/*   Updated: 2022/11/06 02:41:54 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/07 03:56:58 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	transfer_to_stack_b(t_stack **a, t_stack **b, int min, int max, int med)
 			size--;
 		}
 	}
-	printf("There are 3 numbers (minimum, maximum & mediana) left in the A stack!... \
-	The remaining numbers are sent to stack B!\n"); // remove it before submit
+	// printf("There are 3 numbers (minimum, maximum & mediana) left in the A stack!... \
+	// The remaining numbers are sent to stack B!\n"); // remove it before submit
 }
 
 void	determine_position(t_stack **head, int *arr)

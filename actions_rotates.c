@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 20:19:22 by numussan          #+#    #+#             */
-/*   Updated: 2022/11/02 18:12:26 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/06 03:42:07 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ void    ra(t_stack **head, int flag)
 void	rb(t_stack **head_b, int flag)
 {
 	t_stack	*last;
-	t_stack	*tmp;
 
-	tmp = *head_b;
 	last = op_find_last(*head_b);
 	last->next = *head_b;
 	*head_b = (*head_b)->next;

@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 23:26:11 by numussan          #+#    #+#             */
-/*   Updated: 2022/11/01 05:33:16 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/07 03:55:45 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void    presort_3(t_stack **a)
 		sa(a, 1);
 	else if (three > one && three > two && one > two)
 		sa(a, 1);
-	printf("The 3 numbers in stack A are pre-sorted!\n"); // remove it before submit
+	// printf("The 3 numbers in stack A are pre-sorted!\n"); // remove it before submit
 }
 
 void    sorting_3(t_stack **a)
