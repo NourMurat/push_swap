@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 17:17:20 by numussan          #+#    #+#             */
-/*   Updated: 2022/11/07 07:38:35 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/08 10:25:33 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,17 @@ void	rrr(t_stack **head_a, t_stack **head_b);
 
 void	ft_sorting(t_stack **a);
 void    sorting_3(t_stack **a);
-void	preparation_for_big_sorting(t_stack **a);
+void	sorting_4(t_stack **a, t_stack **b);
+void	sorting_5(t_stack **a, t_stack **b);
+void	fill_pos(t_stack **a);
+int		find_min_in_stack(t_stack **a, int *best_pos);
+void	push_min_to_b(t_stack **a, t_stack **b, int min, int best_pos);
+void	preparation_for_big_sorting(t_stack **a, t_stack **b);
 void	find_min_max_med(t_stack **a, int *min, int *max, int *med);
 int		*fill_array(t_stack **a, int *arr);
 int		*insertion_sort_array(t_stack **a, int *arr);
 void	determine_position(t_stack **head, int *arr);
-void	transfer_to_stack_b(t_stack **a, t_stack **b, int min, int max, int med);
+void	transfer_to_stack_b(t_stack **a, t_stack **b);
 void    presort_3(t_stack **a);
 
 // void	reset_i(t_stack **a, t_stack **b);

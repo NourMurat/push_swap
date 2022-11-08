@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 04:53:53 by numussan          #+#    #+#             */
-/*   Updated: 2022/11/07 07:47:47 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/08 10:05:19 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_check_dubl(t_stack **a)
 {
-	t_stack	*temp;
-	t_stack *current;
+	t_stack		*temp;
+	t_stack		*current;
 
 	current = *a;
 	temp = current->next;
@@ -43,17 +43,20 @@ void	ft_is_it_number(t_stack **a, char **str, char *s)
 	if (s[0] == '-' || s[0] == '+')
 	{
 		if (!s[1])
-			ft_err_free_split_and_list(a, str, "<<<<< ERROR! Only one sign - or + >>>>>\n");
+			ft_err_free_split_and_list(a, str, \
+			"<<<<< ERROR! Only one sign - or + >>>>>\n");
 		i++;
 	}
 	while (s[i])
 	{
 		if (s[i] < '0' || s[i] > '9')
-			ft_err_free_split_and_list(a, str, "<<<<< ERROR! Non numeric character! >>>>>\n");
+			ft_err_free_split_and_list(a, str, \
+			"<<<<< ERROR! Non numeric character! >>>>>\n");
 		i++;
 	}
 	if (i > 11)
-		ft_err_free_split_and_list(a, str, "<<<<< ERROR! Overflow of number! >>>>>\n");
+		ft_err_free_split_and_list(a, str, \
+		"<<<<< ERROR! Overflow of number! >>>>>\n");
 }
 
 void	ft_add_numbers_to_stack_a(t_stack **a, char **str, char *s)
@@ -63,14 +66,15 @@ void	ft_add_numbers_to_stack_a(t_stack **a, char **str, char *s)
 	ft_is_it_number(a, str, s);
 	nbr = ft_atoi(s);
 	if (!(nbr >= -2147483648 && nbr <= 2147483647))
-		ft_err_free_split_and_list(a, str, "<<<<< ERROR! Number is not in the range of int type! >>>>>\n");
+		ft_err_free_split_and_list(a, str, \
+		"<<<<< ERROR! Number is not in the range of int type! >>>>>\n");
 	op_fill_list_a(a, (int)nbr);
 }
 
 void	ft_check_dublication(char **s)
 {
-	int	i;
-	int j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (s[i] != NULL)
@@ -149,7 +153,7 @@ void	ft_parsing_and_fill_list_a(int argc, char **s, t_stack **a)
 	separate_nbrs = ft_separate_string(argc, s);
 	if (argc > 2)
 		ft_check_dublication(separate_nbrs);
-	while(separate_nbrs[i] != NULL)
+	while (separate_nbrs[i] != NULL)
 	{
 		ft_add_numbers_to_stack_a(a, separate_nbrs, separate_nbrs[i]);
 		i++;

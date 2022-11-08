@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 17:16:04 by numussan          #+#    #+#             */
-/*   Updated: 2022/11/07 07:23:48 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/08 10:27:15 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	ft_print_stack(t_stack **head)
 	while (temp != NULL)
 	{
 		printf("nbr: %d   ra: %d   rra: %d  rb: %d    rrb: %d\n",
-				temp->nbr, temp->rotA, temp->revrotA, temp->rotB, temp->revrotB);
+			temp->nbr, temp->rotA, temp->revrotA, temp->rotB, temp->revrotB);
+		// printf("%d\n", temp->pos);
 		temp = temp->next;
 	}
 }

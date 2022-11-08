@@ -6,13 +6,13 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 04:01:12 by numussan          #+#    #+#             */
-/*   Updated: 2022/11/06 03:41:44 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/08 08:51:29 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    sa(t_stack **a, int flag)
+void	sa(t_stack **a, int flag)
 {
 	int	temp;
 

@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 01:26:25 by numussan          #+#    #+#             */
-/*   Updated: 2022/11/07 06:02:08 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/08 10:25:11 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,47 +40,9 @@ void	final_sorting(t_stack **a)
 	}
 }
 
-void	transfer_to_stack_b(t_stack **a, t_stack **b, int min, int max, int med)
-{
-	int	size;
-
-	size = op_stack_size(a);
-	while (size > 3)
-	{
-		if ((*a)->nbr == min || (*a)->nbr == max || (*a)->nbr == med)
-			ra(a, 1);
-		else
-		{
-			pb(a, b);
-			size--;
-		}
-	}
-}
-
 void	determine_position(t_stack **head, int *arr)
 {
-	// int		i;
-	// int		size;
-	// t_stack	*tmp;
-
-	// size = op_stack_size(head);
-	// tmp = *head;
-	// while (tmp)
-	// {
-	// 	i = 0;
-	// 	while (i < size)
-	// 	{
-	// 		if (arr[i] == tmp->nbr)
-	// 		{
-	// 			tmp->pos = i;
-	// 			break ;
-	// 		}
-	// 		i++;
-	// 	}
-	// 	tmp = tmp->next;
-	// }
-	
-	int	i;
+	int		i;
 	t_stack	*tmp;
 
 	tmp = *head;
@@ -99,7 +61,7 @@ int	*insertion_sort_array(t_stack **a, int *arr)
 	int	i;
 	int	key;
 	int	j;
-	
+
 	i = 1;
 	while (i < op_stack_size(a))
 	{
@@ -118,9 +80,9 @@ int	*insertion_sort_array(t_stack **a, int *arr)
 
 int	*fill_array(t_stack **a, int *arr)
 {
-	int	i;
+	int		i;
 	t_stack	*tmp;
-	
+
 	i = 0;
 	tmp = *a;
 	while (i < op_stack_size(a))
@@ -135,45 +97,57 @@ void	find_min_max_med(t_stack **a, int *min, int *max, int *med)
 {
 	int	*arr;
 	int	size;
-	// int i = 0;
 
 	size = op_stack_size(a);
-	if (!(arr = malloc(sizeof(int) * size)))
+	arr = malloc(sizeof(int) * size);
+	if (!arr)
 		ft_error("<<<<< ERROR! Memmory didn`t allocate! >>>>>\n");
 	arr = insertion_sort_array(a, fill_array(a, arr));
 	*min = arr[0];
 	*max = arr[size - 1];
 	*med = arr[size / 2];
 	determine_position(a, arr);
-	// while (size--)
-	// 	printf("%d\n", arr[i++]);
 	free(arr);
 	arr = NULL;
 }
 
-void	preparation_for_big_sorting(t_stack **a)
+void	transfer_to_stack_b(t_stack **a, t_stack **b)
 {
-	t_stack	*b;
-	int	min;
-    int	max;
-	int med;
+	int		min;
+	int		max;
+	int		med;
+	int		size;
 
-	b = NULL;
+	size = op_stack_size(a);
+	find_min_max_med(a, &min, &max, &med);
+	while (size > 3)
+	{
+		if ((*a)->nbr == min || (*a)->nbr == max || (*a)->nbr == med)
+			ra(a, 1);
+		else
+		{
+			pb(a, b);
+			size--;
+		}
+	}
+}
+
+void	preparation_for_big_sorting(t_stack **a, t_stack **b)
+{
 	if (op_check_sorted_or_presorted(a) == 1)
 	{
 		// ft_printf("not presort!\n"); // remove it before submit
-		find_min_max_med(a, &min, &max, &med);
-		transfer_to_stack_b(a, &b, min, max, med);
+		transfer_to_stack_b(a, b);
 		presort_3(a);
-		while (b)
-			transfer_to_stack_a(a, &b);
+		while (*b)
+			transfer_to_stack_a(a, b);
 	}
-	ft_free_stack(&b);
+	ft_free_stack(b);
 	if (op_check_sorted_or_presorted(a) == 2)
 	{
 		// ft_printf("presort!\n"); // remove it before submit
 		final_sorting(a);
 	}
-	// if (!op_check_sorted_or_presorted(a))
-	// 	ft_printf("NUMBERS SORTED!!!\n"); // remove it before submit
+// 	if (!op_check_sorted_or_presorted(a))
+// 		ft_printf("NUMBERS SORTED!!!\n"); // remove it before submit
 }

@@ -6,7 +6,7 @@
 /*   By: numussan <numussan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 23:11:38 by numussan          #+#    #+#             */
-/*   Updated: 2022/11/07 05:57:58 by numussan         ###   ########.fr       */
+/*   Updated: 2022/11/08 10:34:38 by numussan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	process_decision(t_stack **a, t_stack **b, t_stack *best)
 	pa(a, b);
 }
 
-t_stack		*get_best_node(t_stack *b)
+t_stack	*get_best_node(t_stack *b)
 {
-	t_stack *tmp;
-	t_stack *best;
+	t_stack		*tmp;
+	t_stack		*best;
 
 	tmp = b;
 	best = b;
@@ -55,10 +55,10 @@ t_stack		*get_best_node(t_stack *b)
 
 void	choose_best_solution(t_stack **b)
 {
-	t_stack *tmp;
-	int	min_B;
-	int	min_A;
-	
+	t_stack	*tmp;
+	int		min_B;
+	int		min_A;
+
 	tmp = *b;
 	while (tmp)
 	{
@@ -90,30 +90,30 @@ void	choose_best_solution(t_stack **b)
 void	count_moves_a(t_stack **a, t_stack **b)
 {
 	int		i;
-	int		prevA;
-	t_stack	*tmpA;
-	t_stack *tmpB;
+	int		prev_a;
+	t_stack	*tmp_a;
+	t_stack	*tmp_b;
 	int		size;
 
-	tmpB = *b;
+	tmp_b = *b;
 	size = op_stack_size(a);
-	while (tmpB)
+	while (tmp_b)
 	{
-		tmpA = *a;
+		tmp_a = *a;
 		i = 0;
-		prevA = op_find_last(*a)->nbr;
-		while (tmpA)
+		prev_a = op_find_last(*a)->nbr;
+		while (tmp_a)
 		{
-			if (prevA < tmpB->nbr && tmpA->nbr > tmpB->nbr)
+			if (prev_a < tmp_b->nbr && tmp_a->nbr > tmp_b->nbr)
 			{
-				tmpB->rotA = i;
-				tmpB->revrotA = size - i;
+				tmp_b->rotA = i;
+				tmp_b->revrotA = size - i;
 			}
 			i++;
-			prevA = tmpA->nbr;
-			tmpA = tmpA->next;
+			prev_a = tmp_a->nbr;
+			tmp_a = tmp_a->next;
 		}
-		tmpB = tmpB->next;
+		tmp_b = tmp_b->next;
 	}
 }
 
@@ -157,7 +157,7 @@ void	count_moves_b(t_stack **b)
 // 	}
 // }
 
-void    transfer_to_stack_a(t_stack **a, t_stack **b)
+void	transfer_to_stack_a(t_stack **a, t_stack **b)
 {
 	// reset_i(a, b);
 	// count_moves(a, b);
@@ -181,11 +181,3 @@ void    transfer_to_stack_a(t_stack **a, t_stack **b)
 	// ft_print_stack(b);
 	// printf("\n\n\n");
 }
-
-
-
-
-
-
-
-
